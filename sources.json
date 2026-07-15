@@ -1,0 +1,19 @@
+{
+  "sources": [
+    {
+      "id": "ngs-newdatums-index",
+      "url": "https://geodesy.noaa.gov/datums/newdatums/index.shtml",
+      "label": "NGS New Datums landing page"
+    },
+    {
+      "id": "ngs-newdatums-faq",
+      "url": "https://geodesy.noaa.gov/datums/newdatums/FAQNewDatums.shtml",
+      "label": "NGS New Datums FAQ"
+    },
+    {
+      "id": "ngs-newdatums-progress",
+      "url": "https://geodesy.noaa.gov/datums/newdatums/TrackOurProgress.shtml",
+      "label": "NGS Track Our Progress (NSRS modernization status)"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+name: NSRS Modernization Check
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'  # Every Monday, 13:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run check
+        id: check
+        continue-on-error: true
+        run: python check_updates.py
+
+      - name: Commit updated state
+        run: |
+          git config user.name "nsrs-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state/ reports/ 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Weekly check: $(date -u +%Y-%m-%dT%H:%M:%SZ) (outcome: ${{ steps.check.outcome }})"
+            git push
+          else
+            echo "Nothing to commit."
+          fi
+
+      - name: Open an issue on change or error
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LATEST_REPORT=$(ls -t reports/*.md | head -1)
+          gh issue create \
+            --title "NSRS monitor: change or error detected ($(date -u +%Y-%m-%d))" \
+            --body-file "$LATEST_REPORT"
+
+      - name: Mark the run as failed if a change or error was detected
+        if: steps.check.outcome == 'failure'
+        run: |
+          echo "See the Issues tab and the latest file under reports/ for details."
+          exit 1
