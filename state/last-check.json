@@ -3,26 +3,21 @@
     "hash": "8440b6b5922dc34e11b05113605265082cdcaee6ce85a3f4de51439c09d6c182",
     "label": "NGS New Datums FAQ",
     "last_changed": null,
-    "last_checked": "2026-07-15T215305Z",
+    "last_checked": "2026-07-15T235642Z",
     "url": "https://geodesy.noaa.gov/datums/newdatums/FAQNewDatums.shtml"
   },
   "ngs-newdatums-index": {
     "hash": "b22fc4957f2fc91204bf4fe6e8deb20a1c7b64988c0fcd6eeb52a62242ef78d1",
     "label": "NGS New Datums landing page",
     "last_changed": null,
-    "last_checked": "2026-07-15T215305Z",
+    "last_checked": "2026-07-15T235642Z",
     "url": "https://geodesy.noaa.gov/datums/newdatums/index.shtml"
   },
   "ngs-newdatums-progress": {
     "hash": "f083066028216ae21950ec671ceb450e4cb7c601dbf74bb0f2beac43ede0deb5",
     "label": "NGS Track Our Progress (NSRS modernization status)",
     "last_changed": null,
-    "last_checked": "2026-07-15T215305Z",
+    "last_checked": "2026-07-15T235642Z",
     "url": "https://geodesy.noaa.gov/datums/newdatums/TrackOurProgress.shtml"
-  },
-  "test-bad-url": {
-    "label": "Deliberately broken test URL (temporary, will be reverted)",
-    "last_error": "2026-07-15T215305Z: HTTP Error 404: Not Found",
-    "url": "https://geodesy.noaa.gov/this-page-does-not-exist-test-404.shtml"
   }
 }
