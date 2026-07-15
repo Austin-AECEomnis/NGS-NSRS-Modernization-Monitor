@@ -28,7 +28,12 @@ jobs:
         run: |
           git config user.name "nsrs-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add state/ reports/ 2>/dev/null || true
+          # state/ always exists; reports/ only exists on a change/error run.
+          # Adding both in one command fails (and stages neither) whenever
+          # reports/ is absent -- add them separately so state/ always gets
+          # staged regardless of whether reports/ exists this run.
+          git add state/
+          if [ -d reports ]; then git add reports/; fi
           if ! git diff --cached --quiet; then
             git commit -m "Weekly check: $(date -u +%Y-%m-%dT%H:%M:%SZ) (outcome: ${{ steps.check.outcome }})"
             git push

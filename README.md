@@ -26,15 +26,17 @@ No LLM or agent runs inside this workflow. It's a fixed, deterministic script on
 
 ## 🚦 How Notification Works
 
-No email service, webhook, or extra credential — this reuses a behavior GitHub already provides for free. When the script detects a content change *or* a fetch error, it exits with a nonzero code, which makes the workflow run show as **failed**. GitHub's default behavior emails the repo owner whenever a workflow fails. A failed run here means "go look," not "something is broken."
+No email service, webhook, or extra credential — no new infrastructure, just GitHub's own primitives, honestly scoped:
 
-The workflow also opens a dated Issue with the details, so there's a persistent, trackable record beyond just an email.
+- **The durable record is a same-repository GitHub Issue**, opened whenever a content change or fetch error is detected, containing the report. This is the thing to actually rely on.
+- **A failed-run email is a secondary, non-guaranteed signal.** When the script detects a change or error, it exits nonzero, which makes the workflow run show as **failed** — and GitHub *can* email the repo owner on workflow failure, but this depends on Austin's own GitHub notification settings, not a universal default. A failed run here means "go look," not "something is broken."
+- **Weekly execution is best-effort, not guaranteed.** GitHub may delay or drop a scheduled run under load, and — the case actually worth knowing about — **GitHub disables scheduled workflows on a public repository after 60 days with no other repository activity.** Since this design only commits when a change is actually detected (see Output below), a long stretch of unchanged NGS pages could eventually cause GitHub to auto-disable the schedule. Given this monitor is deliberately non-load-bearing, that's an accepted risk to notice next time this repo is visited, not something engineered around.
 
 A fetch error (page unreachable, timeout) and a detected content change are two different things and are reported as such — an error is never recorded as "no change."
 
 ## 📄 Output
 
-- **`state/last-check.json`** — current hash, label, and last-checked/last-changed timestamp per source. Committed every run (even "no change" weeks), so the commit history itself is the audit trail of when this actually ran.
+- **`state/last-check.json`** — current hash, label, and last-checked/last-changed timestamp per source. Committed on every run, whether or not anything changed, so the commit history is the audit trail of when this actually ran (as opposed to relying solely on GitHub's own Actions run history, which isn't retained indefinitely).
 - **`reports/<timestamp>.md`** — written only when something changed or errored; content of the Issue GitHub opens.
 
 ## 📝 What To Do When This Fires
