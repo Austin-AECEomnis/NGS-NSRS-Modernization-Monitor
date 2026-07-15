@@ -14,6 +14,11 @@
       "id": "ngs-newdatums-progress",
       "url": "https://geodesy.noaa.gov/datums/newdatums/TrackOurProgress.shtml",
       "label": "NGS Track Our Progress (NSRS modernization status)"
+    },
+    {
+      "id": "test-bad-url",
+      "url": "https://geodesy.noaa.gov/this-page-does-not-exist-test-404.shtml",
+      "label": "Deliberately broken test URL (temporary, will be reverted)"
     }
   ]
 }
