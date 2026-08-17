@@ -1,23 +1,23 @@
 {
   "ngs-newdatums-faq": {
-    "hash": "8440b6b5922dc34e11b05113605265082cdcaee6ce85a3f4de51439c09d6c182",
+    "hash": "9971157baa2cc2480c0bd2d4ceb3f5517a1b43ee5ecc434888d9e4a931110b4d",
     "label": "NGS New Datums FAQ",
-    "last_changed": null,
-    "last_checked": "2026-08-10T142159Z",
+    "last_changed": "2026-08-17T134356Z",
+    "last_checked": "2026-08-17T134356Z",
     "url": "https://geodesy.noaa.gov/datums/newdatums/FAQNewDatums.shtml"
   },
   "ngs-newdatums-index": {
-    "hash": "b22fc4957f2fc91204bf4fe6e8deb20a1c7b64988c0fcd6eeb52a62242ef78d1",
+    "hash": "205645df5c184bed9c45dca1d6291e91f730411d640913714c65625812619a6c",
     "label": "NGS New Datums landing page",
-    "last_changed": null,
-    "last_checked": "2026-08-10T142159Z",
+    "last_changed": "2026-08-17T134356Z",
+    "last_checked": "2026-08-17T134356Z",
     "url": "https://geodesy.noaa.gov/datums/newdatums/index.shtml"
   },
   "ngs-newdatums-progress": {
-    "hash": "f083066028216ae21950ec671ceb450e4cb7c601dbf74bb0f2beac43ede0deb5",
+    "hash": "12c43e33c891f9b08762639d4585914a8856721648a8b9fe16c7bfbca123543e",
     "label": "NGS Track Our Progress (NSRS modernization status)",
-    "last_changed": null,
-    "last_checked": "2026-08-10T142159Z",
+    "last_changed": "2026-08-17T134356Z",
+    "last_checked": "2026-08-17T134356Z",
     "url": "https://geodesy.noaa.gov/datums/newdatums/TrackOurProgress.shtml"
   }
 }
